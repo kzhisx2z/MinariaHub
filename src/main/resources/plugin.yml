@@ -1,0 +1,6 @@
+name: MinariaHub
+version: 1.0
+author: kx2zh
+main: fr.kx2zh.minaria.hub.Hub
+depend:
+  - MinariaAPI
