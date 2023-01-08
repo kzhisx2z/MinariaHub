@@ -15,7 +15,7 @@ public abstract class AbstractManager implements EntryPoints {
     private String filename;
 
     public AbstractManager(Hub hub, String filename) {
-        this(hub = hub);
+        this(hub);
         this.filename = filename;
     }
 

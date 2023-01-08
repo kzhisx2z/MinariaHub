@@ -1,6 +1,7 @@
 package fr.kx2zh.minaria.hub.common.players;
 
 import fr.kx2zh.minaria.hub.Hub;
+import fr.kx2zh.minaria.hub.gui.main.GuiMain;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -40,7 +41,7 @@ public class StaticInventory {
 
         switch (itemStack.getType()) {
             case COMPASS:
-                player.sendMessage("Bonjour");
+                hub.getGuiManager().openGui(player, new GuiMain(hub));
                 break;
 
             default: break;

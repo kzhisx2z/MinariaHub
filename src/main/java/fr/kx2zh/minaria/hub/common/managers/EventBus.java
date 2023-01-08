@@ -25,6 +25,6 @@ public class EventBus implements EntryPoints {
 
     @Override
     public void onLogout(Player player) {
-        managers.forEach(manager -> manager.onLogin(player));
+        managers.forEach(manager -> manager.onLogout(player));
     }
 }

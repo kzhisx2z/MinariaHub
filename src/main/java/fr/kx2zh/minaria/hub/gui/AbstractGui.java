@@ -6,8 +6,12 @@ import fr.kx2zh.minaria.hub.utils.NumberUtils;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractGui extends fr.kx2zh.minaria.api.gui.AbstractGui {
 
@@ -37,6 +41,24 @@ public abstract class AbstractGui extends fr.kx2zh.minaria.api.gui.AbstractGui {
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
+    }
+
+    protected Inventory fillBorder(Inventory inv, ItemStack item) {
+        final int lines = inv.getSize() / 9;
+        final List<Integer> slotsToFill = new ArrayList<>();
+
+        for (int i = 0; i < 9; i++) {
+            slotsToFill.add(i);
+            slotsToFill.add(i + 9 * (lines - 1));
+        }
+        for (int i = 1; i < lines - 1; i++) {
+            slotsToFill.add(i * 9);
+            slotsToFill.add(17 + ((i - 1) * 9));
+        }
+        for (int slot : slotsToFill) {
+            inv.setItem(slot, item);
+        }
+        return inv;
     }
 
     protected int getSlot(String action) {

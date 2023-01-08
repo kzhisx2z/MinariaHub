@@ -5,6 +5,8 @@ import fr.kx2zh.minaria.hub.Hub;
 import fr.kx2zh.minaria.hub.common.managers.AbstractManager;
 import fr.kx2zh.minaria.tools.InventoryUtils;
 import fr.kx2zh.minaria.tools.LocationUtils;
+import fr.kx2zh.minaria.tools.Titles;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -40,6 +42,14 @@ public class PlayerManager extends AbstractManager {
 
         hub.getScheduledExecutorService().execute(() -> hub.getServer().getScheduler().runTask(hub, () -> {
             InventoryUtils.cleanPlayer(player);
+            Titles.sendTabTitle(player,
+                    ChatColor.GOLD + "" + ChatColor.BOLD + ChatColor.ITALIC + "Minaria" + ChatColor.RESET + ChatColor.BOLD + ChatColor.GRAY + " - " + ChatColor.RESET + ChatColor.BOLD + ChatColor.YELLOW + "OP Prison\n",
+                    "\n" +
+                          ChatColor.WHITE + "Une question ? Ou bien juste vous êtes curieux,\n" +
+                          ChatColor.WHITE + "vous pouvez faire " + ChatColor.AQUA + "/help " + ChatColor.WHITE + "ou " + ChatColor.AQUA + "/aide" + ChatColor.WHITE + ".\n" +
+                          "\n" +
+                          ChatColor.YELLOW + "play.minaria.fr"
+            );
 
             player.setGameMode(GameMode.ADVENTURE);
             player.setWalkSpeed(WALK_SPEED);
@@ -48,7 +58,7 @@ public class PlayerManager extends AbstractManager {
             player.setFoodLevel(20);
             player.setHealth(20.0D);
             player.teleport(spawn);
-
+            
             staticInventory.setInventoryToPlayer(player);
         }));
     }

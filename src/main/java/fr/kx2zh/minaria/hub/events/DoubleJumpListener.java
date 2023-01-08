@@ -1,5 +1,6 @@
 package fr.kx2zh.minaria.hub.events;
 
+import fr.kx2zh.minaria.api.MinariaAPI;
 import fr.kx2zh.minaria.hub.Hub;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
@@ -31,7 +32,7 @@ public class DoubleJumpListener implements Listener {
         if(player.getGameMode() != GameMode.ADVENTURE) return;
         if(player.getAllowFlight()) return;
 
-        if(((LivingEntity) player).isOnGround()) {
+        if(((LivingEntity) player).isOnGround() && MinariaAPI.get().getPermissionManager().hasPermission(player, "hub.doublejump")) {
             player.setAllowFlight(true);
             allowed.add(player.getUniqueId());
         }
